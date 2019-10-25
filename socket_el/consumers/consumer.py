@@ -23,8 +23,8 @@ class Consumer:
     def __init__(self, **kwargs):
         self._config = kwargs
 
-    def run(self):
+    def run(self) -> None:
         raise NotImplementedError()
 
-    def flush(self):
+    def flush(self) -> None:
         raise NotImplementedError()

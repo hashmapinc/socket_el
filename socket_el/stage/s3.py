@@ -20,6 +20,9 @@ from socket_el.stage.stage import Stage
 
 class S3(Stage):
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
     def get(self) -> pd.DataFrame:
         pass
 
