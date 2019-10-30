@@ -13,42 +13,44 @@
 # limitations under the License.
 
 runners:
-  - name: websocket_1
-    variety: socket
-    type: consumer
-    uri: wss://ws.coincap.io/trades/binance
-    stage:
-      type: local
-      path: 'tmp'
-    batch_configuration:
-      size: 100
+#  - name: websocket_1
+#    variety: socket
+#    type: consumer
+#    uri: wss://ws.coincap.io/trades/binance
+#    stage:
+#      type: local
+#      path: 'tmp'
+#    batch_configuration:
+#      size: 10
 
   - name: websocket_2
     variety: socket
     type: consumer
     uri: wss://ws.coincap.io/trades/huobi
     stage:
-      type: local
-      path: 'tmp'
+      type: s3
+      access_key:
+      secret_key:
+      bucket:
     batch_configuration:
-      size: 100
+      size: 10
 
-  - name: websocket_3
-    variety: socket
-    type: consumer
-    uri: wss://ws.coincap.io/trades/hitbtc
-    stage:
-      type: local
-      path: 'tmp'
-    batch_configuration:
-      size: 100
+#  - name: websocket_3
+#    variety: socket
+#    type: consumer
+#    uri: wss://ws.coincap.io/trades/hitbtc
+#    stage:
+#      type: local
+#      path: 'tmp'
+#    batch_configuration:
+#      size: 10000
 
 
-  - name: postgres
-    variety: postgres
-    depends_on:
-      - websocket_1
-      - websocket_2
-      - websocket_3
-    type: producer
-    profile: postgres
+  #- name: postgres
+  #  variety: postgres
+  #  depends_on:
+  #    - websocket_1
+  #    - websocket_2
+  #    - websocket_3
+  #  type: producer
+  #  profile: postgres

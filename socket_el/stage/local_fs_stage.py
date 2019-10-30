@@ -107,7 +107,6 @@ class LocalFS(Stage):
             data: json entries
             **kwargs: unused here
         """
-
         self.logger.info('Writing data to staging location with offset {}'.format(self._put_offset))
 
         self._create_path()
@@ -115,5 +114,4 @@ class LocalFS(Stage):
         with open(posixpath.join(self._target_path,
                                  '_'.join([self._file_name_base, str(self._put_offset)]) + '.json'), 'w') as stream:
             stream.writelines(data)
-
         self._put_offset += 1

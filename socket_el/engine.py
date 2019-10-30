@@ -36,12 +36,12 @@ try:
 
     logger.info('Creating threads.')
     consumer_threads = [threading.Thread(target=consumer.run) for consumer in get_consumers()]
-    producer_threads = [threading.Thread(target=producer.run) for producer in get_producers()]
+    #producer_threads = [threading.Thread(target=producer.run) for producer in get_producers()]
     logger.info('Threads created.')
 
     logger.info('Starting threads.')
     [thread.start() for thread in consumer_threads]
-    [thread.start() for thread in producer_threads]
+    #[thread.start() for thread in producer_threads]
     logger.info('Threads started.')
 
 except Exception as e:

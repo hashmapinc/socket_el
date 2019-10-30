@@ -1,3 +1,4 @@
+# coding=utf-8
 # Modifications © 2019 Hashmap, Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -96,7 +97,8 @@ class Socket(Consumer):
         """
 
         try:
-            self._stage.put(data='\n'.join(self._spool))
+            data='\n'.join(self._spool)
+            self._stage.put(data=data)
 
         except Exception as _:
             self.logger.info('Error while writing data to the stage')
