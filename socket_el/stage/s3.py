@@ -15,7 +15,7 @@ import json
 import os
 from time import sleep
 from typing import Dict, List
-
+from io import StringIO
 import boto3 as boto3
 import pandas as pd
 
@@ -81,8 +81,11 @@ class S3(Stage):
 
 
     def put(self, data: Dict, *kwargs) -> None:
+
         filename='_'.join([self._file_name_base, str(self._put_offset)])+'.json'
-        self._client.Object(key=filename).put(Body=json.dumps(data))
+        json_buffer = StringIO()
+        json_buffer.writelines(data)
+        self._client.Object(key=filename).put(Body=json_buffer.getvalue())
         self._put_offset += 1
 
 

@@ -98,6 +98,7 @@ class Socket(Consumer):
 
         try:
             data='\n'.join(self._spool)
+            # data=[i for i in self._spool]
             self._stage.put(data=data)
 
         except Exception as _:
